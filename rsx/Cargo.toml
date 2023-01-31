@@ -1,0 +1,14 @@
+[package]
+name = "rsx"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+rsx_macros = { path = "../rsx_macros", package = "rsx_macros" }
+actix-web = { version = "4", features = ["openssl"] }
+openssl = { version = "0.10" }
+actix-service = "2.0.2"
+actix-server = "2.2.0"
+actix-http = "3.3.0"
+axohtml = "0.4.1"

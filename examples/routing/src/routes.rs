@@ -1,0 +1,1 @@
+#[path = "../app/app.rsx"] pub mod app;

@@ -1,0 +1,10 @@
+[workspace]
+members = [
+    # Core
+    "rsx_macros",
+    "rsx",
+
+    # Examples
+    "examples/routing",
+    "examples/basic",
+]
