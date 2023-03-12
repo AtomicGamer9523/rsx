@@ -39,6 +39,18 @@ pub fn render() -> rsx::Dom {{ let res: rsx::html::dom::DOMTree<String> = {}; rs
     }
 }
 
+/// Serves Media
+#[proc_macro_attribute]
+pub fn media(_attr: TokenStream, item: TokenStream) -> TokenStream {
+    let res = format!("#[doc(hidden)]mod axohtml{{pub use rsx::html::*;}}use rsx::html::*;
+pub fn render() -> rsx::Dom {{ let res: rsx::html::dom::DOMTree<String> = {}; rsx::Dom::from(res) }}",item);
+    match res.parse() {
+        Ok(x) => x,
+        Err(e) => panic!("{}",e)
+    }
+}
+
+
 /// Async runner for RSX
 /// 
 /// # Examples
@@ -118,6 +130,7 @@ pub fn rsx(input: TokenStream) -> TokenStream {
     }
 }
 
+/// DO NOT USE DIRECTLY
 #[doc(hidden)]
 #[proc_macro]
 pub fn __route__(item: TokenStream) -> TokenStream {

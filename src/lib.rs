@@ -22,7 +22,8 @@ pub use rsx_macros::{
 pub use tide::Result as WebResult;
 
 pub(crate) mod consts;
-pub(crate) mod favicon;
+pub mod media;
+pub use media::favicon::Favicon;
 
 /// The result wrapper for RSX
 pub mod res;
@@ -36,7 +37,6 @@ pub mod html {
         types,
         unsafe_text
     };
-    pub use crate::favicon::Favicon;
 }
 
 /// The routing module

@@ -1,5 +1,4 @@
-extern crate rsx;
-use rsx::html::Favicon;
+use rsx::*;
 
 pub fn favicon() -> Favicon {
     Favicon::new("")

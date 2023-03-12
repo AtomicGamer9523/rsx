@@ -1,17 +1,25 @@
 [package]
-name = "rusty_jsx"
+name = "rsx"
 version = "0.1.0"
 edition = "2021"
 
+[features]
+default = ["http"]
+https = ["http", "dep:tide-openssl"]
+http = []
+
 [dependencies]
-rsx = { path = "./rsx" }
+memutils = { git = "https://github.com/AtomicGamer9523/memutils", branch = "main" }
+rsx_macros = { path = "./rsx_macros", package = "rsx_macros" }
+async-std = { version = "1.8.0", features = ["attributes"] }
+tide-openssl = { version = "*", optional = true }
+axohtml = "0.4.1"
 tide = "*"
 
 [workspace]
 members = [
     # Core
     "rsx_macros",
-    "rsx",
 
     # Examples
     "examples/routing",
