@@ -3,7 +3,6 @@ name = "example_basic"
 version = "0.1.0"
 edition = "2021"
 
-
 [dependencies]
 rsx = { path = "../../rsx" }
-actix-web = "4"
+tide = "*"

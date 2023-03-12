@@ -1,3 +1,12 @@
+[package]
+name = "rusty_jsx"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rsx = { path = "./rsx" }
+tide = "*"
+
 [workspace]
 members = [
     # Core
@@ -8,3 +17,11 @@ members = [
     "examples/routing",
     "examples/basic",
 ]
+
+[[example]]
+name = "routing"
+path = "./examples/routing"
+
+[[example]]
+name = "basic"
+path = "./examples/basic"

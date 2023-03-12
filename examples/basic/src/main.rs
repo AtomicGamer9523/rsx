@@ -1,20 +1,18 @@
-use actix_web::{get, App, HttpRequest};
-#[path = "app.rsx"] mod app;
 use rsx::*;
 
-#[get("/")]
-async fn index(_req: HttpRequest) -> HttpResult {
-    rsx::res::Ok(
-        app::render()
-    )
+const PORT: u16 = 8080;
+
+route!("app");
+
+async fn root(_req: tide::Request<()>) -> WebResult {
+    app::render()
+        .into()
 }
 
 #[rsx::main]
 async fn main() -> std::io::Result<()> {
-    WebServer::new(||{
-        App::new()
-        .service(index)
-    })
-    .https("127.0.0.1:3000")?
-    .run().await
+    let mut app = rsx::newApp();
+    app.at("/").get(root);
+    app.listen(format!("[::]:{}", &PORT)).await?;
+    Ok(())
 }

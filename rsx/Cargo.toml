@@ -3,12 +3,15 @@ name = "rsx"
 version = "0.1.0"
 edition = "2021"
 
+[features]
+default = ["http"]
+https = ["http", "dep:tide-openssl"]
+http = []
 
 [dependencies]
+memutils = { git = "https://github.com/AtomicGamer9523/memutils", branch = "main" }
 rsx_macros = { path = "../rsx_macros", package = "rsx_macros" }
-actix-web = { version = "4", features = ["openssl"] }
-openssl = { version = "0.10" }
-actix-service = "2.0.2"
-actix-server = "2.2.0"
-actix-http = "3.3.0"
+async-std = { version = "1.8.0", features = ["attributes"] }
+tide-openssl = { version = "*", optional = true }
 axohtml = "0.4.1"
+tide = "*"

@@ -1,1 +1,4 @@
-#[path = "../app/app.rsx"] pub mod app;
+use rsx::*;
+
+route!("app" <= "../app");
+route!("favicon" <= "../app");
